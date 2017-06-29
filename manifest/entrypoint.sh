@@ -8,8 +8,14 @@ else
 fi
 
 # Try auto install for composer
+composer.phar config -g repo.packagist composer https://packagist.phpcomposer.com
+
+if [ -f "/web/root/composer.lock" ]; then
+ composer.phar install --working-dir=/web/root
+fi
+
 if [ -f "$WEBROOT/composer.lock" ]; then
-  composer install --no-dev --working-dir=$WEBROOT
+ composer.phar install --working-dir=$WEBROOT
 fi
 
 # Display PHP error's or not

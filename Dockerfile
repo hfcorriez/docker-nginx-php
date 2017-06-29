@@ -35,6 +35,7 @@ RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/reposit
         php7-redis \
         php7-mongodb \
         php7-imagick \
+        php7-tokenizer \
         nginx \
         supervisor \
     && rm -rf /var/cache/apk/*
@@ -49,6 +50,7 @@ RUN mkdir -p /etc/supervisor.d/ && mkdir /run/nginx && \
     mv -f /manifest/etc/supervisor/* /etc/supervisor.d && \
     mv -f /manifest/web /web && chmod -R 777 /web && chown -R nginx /web && \
     mv -f /manifest/entrypoint.sh /entrypoint.sh && chmod +x /entrypoint.sh && \
+    chmod +x /manifest/bin/* && mv -f /manifest/bin/* /usr/local/bin/ && \
     rm -rf /manifest
 
 VOLUME ["/web/root"]
