@@ -13,10 +13,10 @@ if [ -f "$WEBROOT/composer.lock" ]; then
 fi
 
 # Display PHP error's or not
-if [[ "$PHP_ERRORS" != "1" ]] ; then
-  echo "php_flag[display_errors] = off" >> /etc/php7/php-fpm.d/www.conf
-else
+if [[ "$ENV" != "prod" ]] ; then
   echo "php_flag[display_errors] = on" >> /etc/php7/php-fpm.d/www.conf
+else
+  echo "php_flag[display_errors] = off" >> /etc/php7/php-fpm.d/www.conf
 fi
 
 # Always chown webroot for better mounting

@@ -21,6 +21,7 @@ RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/reposit
         php7-openssl \
         php7-pdo \
         php7-pdo_mysql \
+        php7-mysqli \
         php7-pdo_pgsql \
         php7-pdo_sqlite \
         php7-phar \
@@ -33,6 +34,7 @@ RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/reposit
         php7-zip \
         php7-redis \
         php7-mongodb \
+        php7-imagick \
         nginx \
         supervisor \
     && rm -rf /var/cache/apk/*
@@ -48,6 +50,8 @@ RUN mkdir -p /etc/supervisor.d/ && mkdir /run/nginx && \
     mv -f /manifest/web /web && chmod -R 777 /web && chown -R nginx /web && \
     mv -f /manifest/entrypoint.sh /entrypoint.sh && chmod +x /entrypoint.sh && \
     rm -rf /manifest
+
+VOLUME ["/web/root"]
 
 EXPOSE 9000 80 443
 
