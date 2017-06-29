@@ -10,11 +10,11 @@ fi
 # Try auto install for composer
 composer.phar config -g repo.packagist composer https://packagist.phpcomposer.com
 
-if [ -f "/web/root/composer.lock" ]; then
+if [ -f "/web/root/composer.json" ]; then
  composer.phar install --working-dir=/web/root
 fi
 
-if [ -f "$WEBROOT/composer.lock" ]; then
+if [ -f "$WEBROOT/composer.json" ]; then
  composer.phar install --working-dir=$WEBROOT
 fi
 

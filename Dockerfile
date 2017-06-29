@@ -38,6 +38,7 @@ RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/reposit
         php7-tokenizer \
         nginx \
         supervisor \
+        git \
     && rm -rf /var/cache/apk/*
 
 COPY ./manifest /manifest
