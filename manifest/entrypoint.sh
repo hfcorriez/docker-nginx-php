@@ -28,11 +28,11 @@ sed -i -e "s/worker_processes 5/worker_processes $procs/" /etc/nginx/nginx.conf
 
 # Run custom scripts
 if [[ "$RUN_SCRIPTS" == "1" ]] ; then
-  if [ -d "/var/www/scripts/" ]; then
+  if [ -d "/web/scripts/" ]; then
     # make scripts executable incase they aren't
-    chmod -Rf 750 /var/www/scripts/*
+    chmod -Rf 750 /web/scripts/*
     # run scripts in number order
-    for i in `ls /var/www/scripts/`; do /var/www/scripts/$i ; done
+    for i in `ls /web/scripts/`; do /www/scripts/$i ; done
   else
     echo "Can't find script directory"
   fi
