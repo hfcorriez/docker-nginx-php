@@ -19,7 +19,7 @@ if [ -f "$WEBROOT/composer.json" ]; then
 fi
 
 # Display PHP error's or not
-if [[ "$ENV" != "prod" ]] ; then
+if [[ "$PHP_ENV" != "production" ]] ; then
   echo "php_flag[display_errors] = on" >> /etc/php7/php-fpm.d/www.conf
 else
   echo "php_flag[display_errors] = off" >> /etc/php7/php-fpm.d/www.conf
